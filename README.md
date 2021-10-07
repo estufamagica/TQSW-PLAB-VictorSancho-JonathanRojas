@@ -2,7 +2,7 @@
 
 ## Comenzando 🚀
 
-Nuestra idea es crear un blog que vaya sobre videojuegos en general. Dondé incluiremos funciones para que los usuarios puedan hacer login, posts y puedan ver sus perfiles, también habrá un formulario de contacto a la empresa. En la parte de posts que haya comentarios, me gustas. Y en la parte del perfil del usuario que el usuario pueda modificar sus datos, ver sus posts, y pueda eliminar su cuenta si el usuario lo desea. 
+Nuestra idea es crear un blog que vaya sobre videojuegos en general. Dondé incluiremos funciones para que los usuarios puedan hacer login, posts y puedan ver sus perfiles, también habrá un formulario de contacto a la empresa. En la parte de posts que haya comentarios. Y en la parte del perfil del usuario que el usuario pueda modificar sus datos, ver sus posts, y pueda eliminar su cuenta si el usuario lo desea. 
 
 ## Construido con 🛠️
 
@@ -10,6 +10,7 @@ Nuestra idea es crear un blog que vaya sobre videojuegos en general. Dondé incl
 * Javascript ES6
 * HTML5
 * CSS3
+* PhpMyAdmin
 
 ## Autores ✒️
 
