@@ -1,0 +1,41 @@
+version: "2"
+services:
+    blog-php:
+        build: .
+        ports: 
+            - "8002:80"
+        volumes:
+            - ./blog:/var/www/html/
+        links:
+            - db
+        container_name: blog-php
+        networks:
+            - default
+    blog-db:
+        image: mysql
+        ports: 
+            - "3306:3306"
+        environment:
+            MYSQL_DATABASE: blog
+            MYSQL_USER: user
+            MYSQL_PASSWORD: test
+            MYSQL_ROOT_PASSWORD: test
+        volumes:
+            - ./dump:/docker-entrypoint-initdb.d
+            - persistent:/var/lib/mysql
+        container_name: db-php
+        networks:
+            - default
+    blog-phpmyadmin:
+        image: phpmyadmin/phpmyadmin
+        links: 
+            - db:db
+        ports:
+            - 8003:80
+        environment:
+            MYSQL_USER: user
+            MYSQL_PASSWORD: test
+            MYSQL_ROOT_PASSWORD: test
+        container_name: blog-phpmyadmin
+volumes:
+    persistent:
