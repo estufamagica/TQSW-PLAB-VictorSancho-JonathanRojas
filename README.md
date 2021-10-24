@@ -38,3 +38,9 @@ docker exec -ti blog-php bash
 ```
 docker exec blog-php ./vendor/bin/phpunit tests/
 ```
+### Run Generate code coverage
+```
+docker exec -ti blog-php bash
+
+XDEBUG_MODE=coverage ./vendor/bin/phpunit --coverage-html coverage
+```

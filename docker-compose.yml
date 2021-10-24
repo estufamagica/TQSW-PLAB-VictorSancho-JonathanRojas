@@ -23,13 +23,13 @@ services:
         volumes:
             - ./dump:/docker-entrypoint-initdb.d
             - persistent:/var/lib/mysql
-        container_name: db-php
+        container_name: blog-db
         networks:
             - default
     blog-phpmyadmin:
         image: phpmyadmin/phpmyadmin
         links: 
-            - db:db
+            - blog-db:db
         ports:
             - 8003:80
         environment:
