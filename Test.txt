@@ -1,0 +1,33 @@
+Hacer un Mock para la BD, y para el login y registro
+- Login y registro
+1) Si se pasa una contraseña incorrecta mostrar error "Contrasseña incorrecta"
+2) Si se pasa un correo no valido mostrar error "No es valido"
+3) Si se pasa un correo que no este en la base de datos mostrar error "Correo no valido"
+4) Si el usuario existe conectarse a su perfil
+5) Si hay campos vacios en el login pues mostrar un mensaje de "Campos vacios"
+
+6) Si el formato del correo no es valido mostrar un error "Formato no valido"
+7) Si el campo del password no tiene un minimo de 8 caracters mostrar un error "Minimo 8 caracteres"
+8) Si el campo de confirmación de contraseña no es la misma que la contraseña mostrar un erro "No es la misma contraseña"
+9) Si los campos son correctos crear el usuario en la BD
+10) Si hay campos vacios en el registro pues mostrar un mensaje de "Campos vacios"
+11) Si el usuario ya existe en la BD, mostrar un error "Usuario existente"
+
+Post:
+
+12) Si el post esta vació
+13) Si esta el usuario conectado puede hacer el post
+14) Si el post esta subido correctamente a la base de datos
+15) Si el post esta enlazado con el usuario que lo ha creado
+16) Si el no hay ningun session inciada no se puede hacer ningun post
+
+DB: Crear un mock para la BD
+
+
+
+
+
+
+
+
+
