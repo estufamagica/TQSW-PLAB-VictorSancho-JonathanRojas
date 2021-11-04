@@ -1,6 +1,9 @@
 <?php
 
-class connectDB {
+namespace Jonap\TqswPlabVictorSanchoJonathanRojas\src\Model;
+
+class DB
+{
     private $host = 'localhost';
     private $dbname = 'blog_videojuegos';
     private $port = 8001;
@@ -8,12 +11,16 @@ class connectDB {
     private $username = 'user';
     private $password = 'user';
 
-    public function connect(){
+    public function connect()
+    {
         $this->dsn = "mysql:host=$this->host;dbname=$this->dbname;port=$this->port;charset=$this->charset";
-        $DBH = new PDO($this->dsn,$this->username,$this->password);
+        $DBH = new PDO($this->dsn, $this->username, $this->password);
         $DBH->exec("set names utf8");
         $DBH->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         return $DBH;
+    }
+    public function insertUser(User $user) {
+
     }
 
 }
