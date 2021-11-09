@@ -11,6 +11,7 @@ class User
 
     public function __construct(string $email, string $password)
     {
+        if(!$this->isCorrectPassword($password)) throw new LogicException("Invalid Password");
         $this->email = $email;
         $this->password = $password;
 
@@ -48,6 +49,8 @@ class User
         $this->password = $password;
     }
 
-    private function isCorrectPassword($password) {}
+    private function isCorrectPassword(string $password) : bool {
+        return false;
+    }
 
 }
