@@ -1,8 +1,8 @@
 <?php
 
-namespace Tests;
+namespace Tests\Model;
 
-use Jonap\TqswPlabVictorSanchoJonathanRojas\src\Model\User;
+use App\Model\User;
 use LogicException;
 use PHPUnit\Framework\TestCase;
 
@@ -13,6 +13,8 @@ class UserTest extends TestCase
         $this->expectException(LogicException::class);
         new User("admin@gmail.com", "123456");
     }
+
+
 
 
 

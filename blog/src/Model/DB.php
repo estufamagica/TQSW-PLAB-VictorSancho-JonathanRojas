@@ -1,6 +1,6 @@
 <?php
 
-namespace Jonap\TqswPlabVictorSanchoJonathanRojas\src\Model;
+namespace App\Model;
 
 class DB
 {
