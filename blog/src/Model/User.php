@@ -6,6 +6,7 @@ use LogicException;
 
 class User
 {
+    const MIN_LENGTH = 8;
     private $email;
     private $password;
 
@@ -50,7 +51,7 @@ class User
     }
 
     private function isCorrectPassword(string $password) : bool {
-        return true;
+        return strlen($password) >= self::MIN_LENGTH;
     }
 
 }
