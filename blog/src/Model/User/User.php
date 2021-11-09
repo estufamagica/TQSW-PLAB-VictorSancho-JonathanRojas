@@ -5,6 +5,7 @@ namespace App\Model\User;
 class User
 {
     const MIN_LENGTH = 8;
+    const MAX_LENGHT = 16;
     private $email;
     private $password;
 
@@ -49,7 +50,7 @@ class User
     }
 
     private function isCorrectPassword(string $password) : bool {
-        return strlen($password) >= self::MIN_LENGTH;
+        return strlen($password) >= self::MIN_LENGTH && strlen($password)<=self::MAX_LENGHT;
     }
 
 }
