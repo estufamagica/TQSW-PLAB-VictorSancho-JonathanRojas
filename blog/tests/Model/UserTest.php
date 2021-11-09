@@ -25,6 +25,9 @@ class UserTest extends TestCase
         new User("admin@gmail.com", "12345678901234567");
     }
 
-
+    public function testInvalidEmailExpectsException(){
+        $this->expectException(InvalidEmailException::class);
+        new User("admin", "12345678");
+    }
 
 }

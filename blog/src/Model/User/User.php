@@ -53,4 +53,6 @@ class User
         return strlen($password) >= self::MIN_LENGTH && strlen($password)<=self::MAX_LENGHT;
     }
 
+
+
 }
