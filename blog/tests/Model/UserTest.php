@@ -20,6 +20,10 @@ class UserTest extends TestCase
         $this->assertEquals("12345678", $user->getPassword());
     }
 
+    public function testMoreSixteenCharactersExpectsException() {
+
+    }
+
 
 
 }
