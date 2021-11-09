@@ -21,7 +21,8 @@ class UserTest extends TestCase
     }
 
     public function testMoreSixteenCharactersExpectsException() {
-
+        $this->expectException(InvalidPasswordException::class);
+        new User("admin@gmail.com", "12345678901234567");
     }
 
 
