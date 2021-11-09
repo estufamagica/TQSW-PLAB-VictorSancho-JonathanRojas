@@ -50,7 +50,7 @@ class User
     }
 
     private function isCorrectPassword(string $password) : bool {
-        return false;
+        return true;
     }
 
 }
