@@ -30,4 +30,9 @@ class UserTest extends TestCase
         new User("admin", "12345678");
     }
 
+    public function testValidEmailExpectsCorrectEmail(){
+        $user = new User("admin@gmail.com", "12345678");
+        $this->assertEquals("admin@gmail.com", $user->getEmail());
+    }
+
 }

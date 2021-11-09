@@ -11,6 +11,7 @@ class User
 
     public function __construct(string $email, string $password)
     {
+        if (!$this->isCorrectEmail($email)) throw new InvalidEmailException("Invalid Email");
         if (!$this->isCorrectPassword($password)) throw new InvalidPasswordException("Invalid Password");
         $this->email = $email;
         $this->password = $password;
@@ -53,6 +54,8 @@ class User
         return strlen($password) >= self::MIN_LENGTH && strlen($password)<=self::MAX_LENGHT;
     }
 
-
+    private function isCorrectEmail(string $mail) : bool {
+        return filter_var($mail, FILTER_VALIDATE_EMAIL);
+    }
 
 }
