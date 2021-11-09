@@ -2,15 +2,19 @@
 
 namespace Jonap\TqswPlabVictorSanchoJonathanRojas\src\Model;
 
+use LogicException;
+
 class User
 {
     private $email;
     private $password;
 
-    public function __construct($email, $password)
+    public function __construct(string $email, string $password)
     {
+        if(!$this->isCorrectPassword($password)) throw new LogicException("Invalid Password");
         $this->email = $email;
         $this->password = $password;
+
     }
 
     /**
@@ -45,6 +49,6 @@ class User
         $this->password = $password;
     }
 
-    public function login() {}
+    private function isCorrectPassword($password) {}
 
 }

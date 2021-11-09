@@ -19,8 +19,4 @@ class DB
         $DBH->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         return $DBH;
     }
-    public function insertUser(User $user) {
-
-    }
-
 }
