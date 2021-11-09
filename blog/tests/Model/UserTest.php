@@ -2,15 +2,15 @@
 
 namespace Tests\Model;
 
-use App\Model\User;
-use LogicException;
+use App\Model\User\User;
+use App\Model\User\InvalidPasswordException;
 use PHPUnit\Framework\TestCase;
 
 class UserTest extends TestCase
 {
     //Register
     public function testLessEightCharactersExpectsException() {
-        $this->expectException(LogicException::class);
+        $this->expectException(InvalidPasswordException::class);
         new User("admin@gmail.com", "1234567");
     }
 

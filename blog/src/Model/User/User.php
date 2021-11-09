@@ -1,8 +1,6 @@
 <?php
 
-namespace App\Model;
-
-use LogicException;
+namespace App\Model\User;
 
 class User
 {
@@ -12,7 +10,7 @@ class User
 
     public function __construct(string $email, string $password)
     {
-        if(!$this->isCorrectPassword($password)) throw new LogicException("Invalid Password");
+        if (!$this->isCorrectPassword($password)) throw new InvalidPasswordException("Invalid Password");
         $this->email = $email;
         $this->password = $password;
 
