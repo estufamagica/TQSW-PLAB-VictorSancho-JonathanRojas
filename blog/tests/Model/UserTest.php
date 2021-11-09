@@ -2,6 +2,7 @@
 
 namespace Tests\Model;
 
+use App\Model\User\InvalidEmailException;
 use App\Model\User\User;
 use App\Model\User\InvalidPasswordException;
 use PHPUnit\Framework\TestCase;
