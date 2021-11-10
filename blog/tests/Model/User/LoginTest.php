@@ -17,15 +17,22 @@ class LoginTest extends TestCase
         $this->assertFalse($login->login($user));
     }
 
-    public function testMailCorrectExistsInBDExpectCorrectEmail() {
+    public function testMailCorrectExistsInBDWrongPasswordExpectsFalse() {
+        $login = new login((new \Tests\PDOStatementMock)->create(['email' => 'test@gmail.com',
+            'password'=>'12345678', 'id'=>'1']));
+
+        $user = new User("test@gmail.com", "afdafafaf");
+        $this->assertEquals("false", $login->login($user));
 
     }
 
-    public function testWrongPasswordBDExpectsIncorretLogin(){
 
-    }
 
     public function testCorrectLoginExpectsLogin() {
+        $login = new login((new \Tests\PDOStatementMock)->create(['email' => 'test@gmail.com',
+            'password'=>'12345678', 'id'=>'1']));
 
+        $user = new User("test@gmail.com", "12345678");
+        $this->assertEquals("true", $login->login($user));
     }
 }
