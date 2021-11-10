@@ -22,17 +22,15 @@ class LoginTest extends TestCase
             'password'=>'12345678', 'id'=>'1']));
 
         $user = new User("test@gmail.com", "afdafafaf");
-        $this->assertEquals("false", $login->login($user));
+        $this->assertFalse($login->login($user));
 
     }
-
-
 
     public function testCorrectLoginExpectsLogin() {
         $login = new login((new \Tests\PDOStatementMock)->create(['email' => 'test@gmail.com',
             'password'=>'12345678', 'id'=>'1']));
 
         $user = new User("test@gmail.com", "12345678");
-        $this->assertEquals("true", $login->login($user));
+        $this->assertTrue($login->login($user));
     }
 }
