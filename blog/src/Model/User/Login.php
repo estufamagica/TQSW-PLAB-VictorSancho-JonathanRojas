@@ -15,7 +15,7 @@ class Login
     public function login(User $user) : bool{
         $user_data = $this->getUserByEmail($user->getEmail());
         if ($user_data){
-            return $this->assertEquals($user->getPassword(), $user_data['password']);
+            return $user->getPassword()==$user_data['password'];
         }
         return false;
     }
