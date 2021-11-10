@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Model;
+namespace Tests\Model\User;
 
 use App\Model\User\InvalidEmailException;
 use App\Model\User\User;
@@ -9,7 +9,6 @@ use PHPUnit\Framework\TestCase;
 
 class UserTest extends TestCase
 {
-    //Register
     public function testLessEightCharactersExpectsException() {
         $this->expectException(InvalidPasswordException::class);
         new User("admin@gmail.com", "1234567");
@@ -35,5 +34,7 @@ class UserTest extends TestCase
         $user = new User("admin@gmail.com", "12345678");
         $this->assertEquals("admin@gmail.com", $user->getEmail());
     }
+
+
 
 }

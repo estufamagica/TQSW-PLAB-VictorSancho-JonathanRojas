@@ -2,21 +2,46 @@
 
 namespace App\Model;
 
+use PDO;
+use PDOException;
+
 class DB
 {
     private $host = 'localhost';
     private $dbname = 'blog_videojuegos';
-    private $port = 8001;
-    private $charset = 'UTF8mb4';
     private $username = 'user';
     private $password = 'user';
 
-    public function connect()
+    private static $instance;
+
+    private $conn;
+
+    private function __construct()
     {
-        $this->dsn = "mysql:host=$this->host;dbname=$this->dbname;port=$this->port;charset=$this->charset";
-        $DBH = new PDO($this->dsn, $this->username, $this->password);
-        $DBH->exec("set names utf8");
-        $DBH->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        return $DBH;
+
+        try {
+            $this->conn = new PDO(
+                sprintf('mysql:dbname=%s;host=%s;charset=utf8mb4',
+                    $this->dbname,
+                    $this->host),
+                $this->username,
+                $this->password
+            );
+        }catch (PDOException $exception) {
+            echo sprintf('Connection failed: %s', $exception->getMessage());
+        }
+
     }
+    private static function getInstance(): self {
+        if(self::$instance == null) self::$instance = new self();
+        return self::$instance;
+    }
+
+    public static function connection(): PDO
+    {
+        return self::getInstance()->conn;
+    }
+
+
+
 }
