@@ -13,7 +13,11 @@ class Login
     }
 
     public function login(User $user) : bool{
-        return (bool)$this->getUserByEmail($user->getEmail());
+        $user_data = $this->getUserByEmail($user->getEmail());
+        if ($user_data){
+            return $this->assertEquals($user->getPassword(), $user_data['password']);
+        }
+        return false;
     }
 
     private function getUserByEmail(string $email) {
