@@ -14,12 +14,15 @@ class Register
     }
 
     public function register(User $user, string $username, string $password_verify) : bool {
-        return true;
+        $userByEmail =  $this->getUserByEmail($user->getEmail());
+        return empty($userByEmail);
     }
 
-    private function ifExistsEmailInBD(string $email)
-    {
-
+    private function getUserByEmail(string $email) {
+        $query = $this->connection->prepare('SELECT * FROM users WHERE email = :email');
+        $query->bindValue(':email', $email);
+        $query->execute();
+        return $query->fetch(PDO::FETCH_ASSOC) ?? null;
     }
 
 
