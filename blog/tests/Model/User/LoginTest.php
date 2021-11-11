@@ -25,7 +25,6 @@ class LoginTest extends TestCase
         $this->assertFalse($login->login($user));
 
     }
-
     public function testCorrectLoginExpectsLogin() {
         $login = new login((new \Tests\PDOStatementMock)->create(['email' => 'test@gmail.com',
             'password'=>'12345678', 'id'=>'1']));

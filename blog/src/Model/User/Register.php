@@ -2,6 +2,8 @@
 
 namespace App\Model\User;
 
+use PDO;
+
 class Register
 {
     private PDO $connection;
@@ -11,14 +13,16 @@ class Register
         $this->connection = $connection;
     }
 
+    public function register(User $user, string $username, string $password_verify) : bool {
+        return true;
+    }
+
     private function ifExistsEmailInBD(string $email)
     {
 
     }
 
-    public function register(User $user) : bool {
-        return true;
-    }
+
 
 
 }

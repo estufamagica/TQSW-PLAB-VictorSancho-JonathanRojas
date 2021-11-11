@@ -25,7 +25,6 @@ class Login
         $query->bindValue(':email', $email);
         $query->execute();
         return $query->fetch(PDO::FETCH_ASSOC) ?? null;
-
     }
 
 

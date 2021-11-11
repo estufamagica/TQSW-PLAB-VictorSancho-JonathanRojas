@@ -8,15 +8,18 @@ class User
     const MAX_LENGHT = 16;
     private $email;
     private $password;
+    private $username;
 
     public function __construct(string $email, string $password)
     {
         if (!$this->isCorrectEmail($email)) throw new InvalidEmailException("Invalid Email");
         if (!$this->isCorrectPassword($password)) throw new InvalidPasswordException("Invalid Password");
+
         $this->email = $email;
         $this->password = $password;
 
     }
+
 
     /**
      * @return mixed
@@ -50,6 +53,22 @@ class User
         $this->password = $password;
     }
 
+    /**
+     * @return mixed
+     */
+    public function getUsername()
+    {
+        return $this->username;
+    }
+
+    /**
+     * @param mixed $username
+     */
+    public function setUsername($username): void
+    {
+        $this->username = $username;
+    }
+
     private function isCorrectPassword(string $password) : bool {
         return strlen($password) >= self::MIN_LENGTH && strlen($password) <= self::MAX_LENGHT
             && ctype_alnum($password);
@@ -57,6 +76,10 @@ class User
 
     private function isCorrectEmail(string $mail) : bool {
         return filter_var($mail, FILTER_VALIDATE_EMAIL);
+    }
+
+    private function isCorrectUsername(string $username) : bool {
+        return true;
     }
 
 }

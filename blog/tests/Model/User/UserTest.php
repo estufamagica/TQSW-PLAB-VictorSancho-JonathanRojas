@@ -14,7 +14,7 @@ class UserTest extends TestCase
         new User("admin@gmail.com", "1234567");
     }
 
-    public function testNewUserWithCorrectPasswordExpectsCorrectPass() {
+    public function testMinimumCharactersInPasswordExpectsCorrectPass() {
 
         $user = new User("admin@gmail.com", "12345678");
         $this->assertEquals("12345678", $user->getPassword());
