@@ -51,7 +51,8 @@ class User
     }
 
     private function isCorrectPassword(string $password) : bool {
-        return strlen($password) >= self::MIN_LENGTH && strlen($password)<=self::MAX_LENGHT;
+        return strlen($password) >= self::MIN_LENGTH && strlen($password) <= self::MAX_LENGHT
+            && ctype_alnum($password);
     }
 
     private function isCorrectEmail(string $mail) : bool {

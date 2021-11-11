@@ -25,7 +25,7 @@ class UserTest extends TestCase
         new User("admin@gmail.com", "12345678901234567");
     }
 
-    public function testCharactersInvalidsinPasswordExpectsException() {
+    public function testInvalidCharactersInPasswordExpectsException() {
         $this->expectException(InvalidPasswordException::class);
         new User("emai@gamil.com", "/123?::!");
     }
