@@ -40,16 +40,25 @@ class PostTest extends TestCase
     }
 
     public function testPostWithMessageEmptyExpectsException() {
-
+        $this->expectException(InvalidMessageException::class);
+        new Post("1", "", "12345678901234567890", "id_1");
     }
 
-    public function testPostWithTwentyOneCharactersInMessageExpectsMinimumException() {
+    public function testPostWithNineteenCharactersInMessageExpectsMinimumException() {
 
     }
 
     public function testPostWithTwentyCharactersInMessageExpectsCorrect() {
 
     }
+
+    public function testPostWithTwentyOneCharactersInMessageExpectsCorrect() {
+
+    }
+
+
+
+
 
 
 
