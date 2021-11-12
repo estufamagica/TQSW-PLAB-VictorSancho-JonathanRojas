@@ -6,6 +6,7 @@ class Post
 {
     private const SUBJECT_MIN_LENGTH = 3;
     private const SUBJECT_MAX_LENGTH = 21;
+    private const MESSAGE_MAX_LENGTH = 256;
     private string $subject;
     private string $message;
     private string $user_id;
@@ -24,6 +25,7 @@ class Post
         $this->user_id = $user_id;
 
         if (!$this->isCorrectSubject($subject)) throw new InvalidSubjectException("Invalid Subject. Between 3 and 20 characters");
+        if (!$this->isCorrectMessage($message)) throw new InvalidMessageException("Invalid Message.");
         $this->subject = $subject;
         $this->message = $message;
 
@@ -54,7 +56,9 @@ class Post
         return strlen($subject) > self::SUBJECT_MIN_LENGTH && strlen($subject) < self::SUBJECT_MAX_LENGTH;
     }
 
-    private function isCorrectMessage(string $message): bool { return true;}
+    private function isCorrectMessage(string $message): bool {
+        return strlen($message) < self::MESSAGE_MAX_LENGTH;
+    }
 
 
 }
