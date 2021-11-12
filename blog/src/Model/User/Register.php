@@ -14,8 +14,13 @@ class Register
     }
 
     public function register(User $user, string $username, string $password_verify) : bool {
+
         $userByEmail =  $this->getUserByEmail($user->getEmail());
-        return empty($userByEmail);
+        if((ctype_alnum($username))&&(!$userByEmail)&&($password_verify==$user->getPassword())){
+            $this->insertUser();
+        }
+
+        return false;
     }
 
     private function getUserByEmail(string $email) {
@@ -23,6 +28,14 @@ class Register
         $query->bindValue(':email', $email);
         $query->execute();
         return $query->fetch(PDO::FETCH_ASSOC) ?? null;
+    }
+
+    private function insertUser(User $user, string $username){
+        $query = $this->connection->prepare('INSERT INTO users (id, username, email, password) VALUES (NULL, :username, :email, :password)');
+        $query->bindValue(':username', $username);
+        $query->bindValue(':email', $user->getEmail());
+        $query->bindValue(':password', $user->getPassword());
+        $query->execute();
     }
 
 
