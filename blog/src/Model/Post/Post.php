@@ -6,7 +6,7 @@ class Post
 {
     private const SUBJECT_MIN_LENGTH = 3;
     private const SUBJECT_MAX_LENGTH = 21;
-    private const MESSAGE_MAX_LENGTH = 256;
+    private const MESSAGE_MAX_LENGTH = 257;
     private string $subject;
     private string $message;
     private string $user_id;
