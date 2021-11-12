@@ -8,8 +8,7 @@ use PHPUnit\Framework\TestCase;
 
 class PDOStatementMock extends TestCase
 {
-
-    public function create($expected) {
+    public function create(... $expectedReturns) {
         $PDOStatementMock = $this->getMockBuilder(PDOStatement::class)
             ->setMethods(array('fetch', 'bindValue', 'execute'))
             ->disableOriginalConstructor()
@@ -17,7 +16,7 @@ class PDOStatementMock extends TestCase
 
         $PDOStatementMock->expects($this->any())
             ->method('fetch')
-            ->willReturn($expected);
+            ->willReturn(...$expectedReturns);
 
         $connectionMock = $this->getMockBuilder(PDO::class)
             ->setMethods(array('prepare'))

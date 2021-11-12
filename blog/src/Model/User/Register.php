@@ -17,7 +17,8 @@ class Register
 
         $userByEmail =  $this->getUserByEmail($user->getEmail());
         if((ctype_alnum($username))&&(!$userByEmail)&&($password_verify==$user->getPassword())){
-            $this->insertUser();
+            $this->insertUser($user, $username);
+            return (bool) $this->getUserByEmail($user->getEmail());
         }
 
         return false;

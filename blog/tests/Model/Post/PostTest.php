@@ -21,10 +21,12 @@ class PostTest extends TestCase
         new Post("1", "abc", "Hola Pepito", "id_1");
     }
 
-    public function testCreatePostWithTwentyOneCharactersSubjectExpectsException(){
+    public function testPostWithTwentyOneCharactersSubjectExpectsException(){
         $this->expectException(InvalidSubjectException::class);
         new Post("1","123456789012345678901", "Hola Pepito", "id_1");
     }
+
+
 
 
 
