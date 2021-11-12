@@ -47,7 +47,6 @@ class CreateTest extends TestCase
             ->method('prepare')
             ->willReturn($pdoStatementMock);
 
-
         $createPost = new Create($pdoMock);
         $post = new Post("", "Title", "12345678901234567890", "");
         $this->assertFalse($createPost->create($post));

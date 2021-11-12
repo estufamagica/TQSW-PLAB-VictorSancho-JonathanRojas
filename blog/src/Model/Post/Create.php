@@ -12,7 +12,7 @@ class Create
     }
 
     public function create(Post $post) : bool {
-        return true;
+        return false;
     }
 
 
