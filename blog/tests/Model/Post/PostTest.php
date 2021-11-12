@@ -27,16 +27,28 @@ class PostTest extends TestCase
         new Post("1","123456789012345678901", "Hola Pepito", "id_1");
     }
 
-    public function testPostWithTwoHundredAndFiftySevenMessageExpectsMaximumException() {
+    public function testPostWithTwoHundredAndFiftySevenCharactersInMessageExpectsMaximumException() {
         $message = "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, s";
         $this->expectException(InvalidMessageException::class);
         new Post("1", "hola", $message, "id_1");
     }
 
-    public function testPostWithTwoHundredAndFiftySixMessageExpectsEquals() {
+    public function testPostWithTwoHundredAndFiftySixCharactersInMessageExpectsCorrect() {
         $message = "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis,.";
         $post = new Post("1", "hola", $message, "id_1");
         $this->assertEquals($message, $post->getMessage());
+    }
+
+    public function testPostWithMessageEmptyExpectsException() {
+
+    }
+
+    public function testPostWithTwentyOneCharactersInMessageExpectsMinimumException() {
+
+    }
+
+    public function testPostWithTwentyCharactersInMessageExpectsCorrect() {
+
     }
 
 
