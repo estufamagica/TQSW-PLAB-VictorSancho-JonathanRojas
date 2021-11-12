@@ -21,7 +21,7 @@ class Post
     }
 
     public function create() : bool {
-        return strlen($this->subject) > 3;
+        return strlen($this->subject) > 3 && strlen($this->subject) < 21;
     }
 
     public function delete() : bool {
