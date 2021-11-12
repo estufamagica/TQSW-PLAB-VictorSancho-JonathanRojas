@@ -11,7 +11,7 @@ class Create
         $this->connection = $connection;
     }
 
-    private function create() : bool {
+    public function create(Post $post) : bool {
         return true;
     }
 
