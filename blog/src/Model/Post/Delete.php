@@ -2,10 +2,13 @@
 
 namespace App\Model\Post;
 
+use PDO;
+
 class Delete
 {
-    public function __construct() {
-
+    private PDO $connection;
+    public function __construct(PDO $connection) {
+        $this->connection = $connection;
     }
     private function delete() : bool {
         return true;

@@ -7,14 +7,14 @@ use PDOException;
 
 class DB
 {
-    private $host = 'localhost';
-    private $dbname = 'blog_videojuegos';
-    private $username = 'user';
-    private $password = 'user';
+    private string $host = 'localhost';
+    private string $dbname = 'blog_videojuegos';
+    private string $username = 'user';
+    private string $password = 'user';
 
     private static $instance;
 
-    private $conn;
+    private PDO $conn;
 
     private function __construct()
     {
