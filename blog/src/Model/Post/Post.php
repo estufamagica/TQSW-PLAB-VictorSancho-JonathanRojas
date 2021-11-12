@@ -26,6 +26,7 @@ class Post
 
         if (!$this->isCorrectSubject($subject)) throw new InvalidSubjectException("Invalid Subject. Between 3 and 20 characters");
         if (!$this->isCorrectMessage($message)) throw new InvalidMessageException("Invalid Message.");
+        else if($this->isEmptyMessage($message)) throw new InvalidMessageException("Empty Message");
         $this->subject = $subject;
         $this->message = $message;
 
@@ -57,7 +58,11 @@ class Post
     }
 
     private function isCorrectMessage(string $message): bool {
-        return strlen($message) < self::MESSAGE_MAX_LENGTH;
+        return strlen($message) < self::MESSAGE_MAX_LENGTH ;
+    }
+
+    private function isEmptyMessage(string $message): bool {
+        return empty($message);
     }
 
 
