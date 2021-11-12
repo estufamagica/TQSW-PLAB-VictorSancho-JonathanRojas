@@ -51,11 +51,15 @@ class PostTest extends TestCase
     }
 
     public function testPostWithTwentyCharactersInMessageExpectsCorrect() {
-
+        $message =  "Lorem ipsum dolor si";
+        $this->expectException(InvalidMessageException::class);
+        new Post("1", "hola", $message, "id_1");
     }
 
     public function testPostWithTwentyOneCharactersInMessageExpectsCorrect() {
-
+        $message =  "Lorem ipsum dolor sii";
+        $this->expectException(InvalidMessageException::class);
+        new Post("1", "hola", $message, "id_1");
     }
 
 
