@@ -62,4 +62,9 @@ class PostTest extends TestCase
         $this->assertEquals($message, $post->getMessage());
     }
 
+    public function testPostWithSubjectEmptyExpectsException() {
+        $this->expectException(InvalidSubjectException::class);
+        new Post("1", "", "Lorem ipsum dolor sii", "id_1");
+    }
+
 }
