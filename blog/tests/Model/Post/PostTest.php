@@ -10,10 +10,10 @@ use PHPUnit\Framework\TestCase;
 class PostTest extends TestCase
 {
     public function testCreateValidPostExpectsTrue() {
-        $post = new Post("1","Title", "Hello world", "id_1");
+        $post = new Post("1","Title", "12345678901234567890", "id_1");
         $this->assertEquals("1", $post->getId());
         $this->assertEquals("Title", $post->getSubject());
-        $this->assertEquals("Hello world", $post->getMessage());
+        $this->assertEquals("12345678901234567890", $post->getMessage());
         $this->assertEquals("id_1", $post->getUserId());
     }
 
@@ -52,26 +52,14 @@ class PostTest extends TestCase
 
     public function testPostWithTwentyCharactersInMessageExpectsCorrect() {
         $message =  "Lorem ipsum dolor si";
-        $this->expectException(InvalidMessageException::class);
-        new Post("1", "hola", $message, "id_1");
+        $post = new Post("1", "hola", $message, "id_1");
+        $this->assertEquals($message, $post->getMessage());
     }
 
     public function testPostWithTwentyOneCharactersInMessageExpectsCorrect() {
         $message =  "Lorem ipsum dolor sii";
-        $this->expectException(InvalidMessageException::class);
-        new Post("1", "hola", $message, "id_1");
+        $post = new Post("1", "hola", $message, "id_1");
+        $this->assertEquals($message, $post->getMessage());
     }
-
-
-
-
-
-
-
-
-
-
-
-
 
 }
