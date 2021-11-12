@@ -12,9 +12,10 @@ class PostTest extends TestCase
         $this->assertTrue($post->create(), "Valid post");
     }
 
-    public function testCreateInvalidPostExpectsFalse(){
-        $post = new Post("Title", "", "id_1");
-        $this->assertFalse($post->create(), "Invalid post");
+    public function testCreatePostWithThreeCharactersSubjectExpectsException(){
+
+        $post = new Post("abc", "Hola Pepito", "id_1");
+        $this->assertFalse($post->create(), "Invalid Subject");
     }
 
 
