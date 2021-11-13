@@ -10,20 +10,17 @@ class Post
     private const MESSAGE_MIN_LENGTH = 19;
     private string $subject;
     private string $message;
-    private string $user_id;
-    private string $id;
+    private string $userEmail;
 
     /**
-     * @param string $id
      * @param string $subject
      * @param string $message
-     * @param string $user_id
+     * @param string $userEmail
+     *
      */
-    public function __construct(string $id, string $subject, string $message, string $user_id)
+    public function __construct(string $subject, string $message, string $userEmail)
     {
-
-        $this->id = $id;
-        $this->user_id = $user_id;
+        $this->userEmail = $userEmail;
 
         if (!$this->isCorrectSubject($subject)) throw new InvalidSubjectException("Invalid Subject. Between 3 and 20 characters");
         if (!$this->isCorrectMessage($message)) throw new InvalidMessageException("Invalid Message.");
@@ -32,10 +29,6 @@ class Post
 
     }
 
-    public function getId(): string
-    {
-        return $this->id;
-    }
 
     public function getSubject(): string
     {
@@ -47,10 +40,9 @@ class Post
         return $this->message;
     }
 
-
-    public function getUserId(): string
+    public function getUserEmail(): string
     {
-        return $this->user_id;
+        return $this->userEmail;
     }
 
     private function isCorrectSubject(string $subject): bool {

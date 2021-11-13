@@ -12,28 +12,27 @@ class Create
     }
 
     public function create(Post $post) : bool {
-        $postByID =  $this->getPostByID($post->getId());
+        $postByID =  $this->getPostByEmail($post->getUserEmail());
         if(!$postByID){
             $this->insert($post);
-            return $this->getPostByID($post->getId());
+            return $this->getPostByEmail($post->getUserEmail());
         }
         return false;
     }
 
-    private function getPostByID(string $id) {
+    private function getPostByEmail(string $userEmail) {
 
-        $query = $this->connection->prepare('SELECT id, idUser, title FROM posts WHERE id = :id');
-        $query->bindValue(':id', $id);
+        $query = $this->connection->prepare('SELECT id, userEmail, title FROM posts WHERE userEmail = :userEmail');
+        $query->bindValue(':userEmail', $userEmail);
         $query->execute();
         return (bool) $query->fetch(PDO::FETCH_ASSOC);
     }
 
     private function insert(Post $post) {
-        $query = $this->connection->prepare('INSERT INTO posts (id, subject, message, id_user) VALUES (:user_id, :subject, :message, :id_post)');
-        $query->bindValue(':id', $post->getId());
+        $query = $this->connection->prepare('INSERT INTO posts (subject, message, userEmail) VALUES (:subject, :message, :userEmail)');
         $query->bindValue(':subject', $post->getSubject());
         $query->bindValue(':message', $post->getMessage());
-        $query->bindValue(':id_user', $post->getUserId());
+        $query->bindValue(':userEmail', $post->getUserEmail());
         $query->execute();
     }
 

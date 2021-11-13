@@ -5,9 +5,9 @@ namespace App\Model;
 use PDO;
 use PDOException;
 
-class DB
+class DataBase
 {
-    private string $host = 'localhost';
+    private string $host = 'blog-db';
     private string $dbname = 'blog';
     private string $username = 'user';
     private string $password = 'test';
