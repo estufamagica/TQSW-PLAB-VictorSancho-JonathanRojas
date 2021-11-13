@@ -22,7 +22,7 @@ class CreateTest extends TestCase
 
         $createPost = new Create((new PDOStatementMock)->create(['id' => '1',
             'userEmail'=>'admin@admin.com', 'title' => 'Title']));
-        $post = new Post("", "12345678901234567890", "admin@admin.com");
+        $post = new Post("Title", "12345678901234567890", "admin@admin.com");
         $this->assertFalse($createPost->create($post));
     }
 }
