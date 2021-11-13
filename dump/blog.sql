@@ -1,16 +1,24 @@
-USE blog;
+
 CREATE DATABASE IF NOT EXISTS blog;
+USE blog;
 
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+CREATE TABLE IF NOT EXISTS users (
+    id int(4) NOT NULL AUTO_INCREMENT,
+    email varchar(50) NOT NULL,
+    username varchar(20) NOT NULL,
+    password varchar(16) NOT NULL,
+    PRIMARY KEY (id, email)
+);
+
+CREATE TABLE IF NOT EXISTS posts (
+    id int(4) NOT NULL AUTO_INCREMENT,
+    subject VARCHAR(50) NOT NULL,
+    message VARCHAR(256) NOT NULL,
+    userEmail VARCHAR(50) NOT NULL,
+    PRIMARY KEY (id),
+    CONSTRAINT FOREIGN KEY fk_posts_users (userEmail) REFERENCES users (email)
+);
+
+INSERT INTO users(`email`, `username`, `password`) VALUES ('admin@admin.com','admin','adminadmin')
 
 
-CREATE TABLE `Person` (
-                          `id` int(11) NOT NULL,
-                          `name` varchar(20) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
-
-INSERT INTO `Person` (`id`, `name`) VALUES
-                                        (1, 'William'),
-                                        (2, 'Marc'),
-                                        (3, 'John');

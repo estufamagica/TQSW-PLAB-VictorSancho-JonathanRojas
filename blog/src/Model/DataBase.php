@@ -8,9 +8,9 @@ use PDOException;
 class DB
 {
     private string $host = 'localhost';
-    private string $dbname = 'blog_videojuegos';
+    private string $dbname = 'blog';
     private string $username = 'user';
-    private string $password = 'user';
+    private string $password = 'test';
 
     private static $instance;
 
@@ -32,12 +32,13 @@ class DB
         }
 
     }
-    private static function getInstance(): self {
+
+    public static function getInstance(): self {
         if(self::$instance == null) self::$instance = new self();
         return self::$instance;
     }
 
-    public static function connection(): PDO
+    public function connection(): PDO
     {
         return self::getInstance()->conn;
     }

@@ -1,6 +1,6 @@
 FROM php:7.4-apache
 
-RUN docker-php-ext-install mysqli
+RUN docker-php-ext-install mysqli pdo pdo_mysql
 
 RUN apt-get update && apt-get -y --no-install-recommends install git \
     && php -r "readfile('http://getcomposer.org/installer');" | php -- --install-dir=/usr/bin/ --filename=composer \
