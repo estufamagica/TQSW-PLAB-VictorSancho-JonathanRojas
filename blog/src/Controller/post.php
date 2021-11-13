@@ -4,6 +4,7 @@ namespace App\Controller;
 use App\Model\DataBase;
 use App\Model\Post\Create;
 use App\Model\Post\Post;
+use LogicException;
 
 $db = DataBase::getInstance()->connection();
 
@@ -12,21 +13,22 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
     $message = $_POST['message'];
 
     try {
+
         $post = new Post($subject, $message, $_SESSION['email']);
-        if($register->register($user, $username, $passwordVerify)) {
-            echo "<span>Correct register - Now Log In</span>";
+        $create = new Create($db);
+        if($create->create($post)) {
+            echo "<span>Create new Post</span>";
             require __DIR__ . '/../Resources/homepage.php';
-            return;
         } else {
-            echo "Username not valid or passwords not matching or your profile already exists";
-            require_once __DIR__ . '/../View/register.php';
-            return;
+            echo "Not created this post, verify your inputs";
+            require_once __DIR__ . '/../View/post.php';
         }
+        return;
     }catch (LogicException $logicException) {
         echo "Credeneciales incorrectos:  " . $logicException->getMessage();
-        require_once __DIR__ . '/../View/register.php';
+        require_once __DIR__ . '/../View/post.php';
         return;
     }
 }
-require_once __DIR__ . '/../View/register.php';
+require_once __DIR__ . '/../View/post.php';
 

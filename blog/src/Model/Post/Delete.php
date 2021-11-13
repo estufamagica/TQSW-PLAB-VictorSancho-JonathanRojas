@@ -12,7 +12,6 @@ class Delete
     }
     public function delete(Post $post, int $id) : bool {
         $postByID =  $this->getPostByUserEmail($post->getUserEmail());
-        var_dump($postByID);
         if($postByID){
             $this->deletePost($post, $id);
             return !$this->getPostByUserEmail($post->getUserEmail());
