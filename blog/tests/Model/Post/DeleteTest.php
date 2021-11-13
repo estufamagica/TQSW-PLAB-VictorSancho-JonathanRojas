@@ -12,7 +12,7 @@ class DeleteTest extends TestCase
 {
     public function testDeletePostIfExistsPostExpectsDelete() {
         $deletePost = new Delete((new PDOStatementMock)->create(['id' => 1,
-            'idUser'=>'1', 'title' => 'Title'], []));
+            'idUser'=>'admin@admin.com', 'title' => 'Title'], []));
         $post = new Post("Title", "12345678901234567890", "admin@admin.com");
         $this->assertTrue($deletePost->delete($post, 1));
     }

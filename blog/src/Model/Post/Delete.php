@@ -12,8 +12,9 @@ class Delete
     }
     public function delete(Post $post, int $id) : bool {
         $postByID =  $this->getPostByUserEmail($post->getUserEmail());
+        var_dump($postByID);
         if($postByID){
-            $this->deletePost($post);
+            $this->deletePost($post, $id);
             return !$this->getPostByUserEmail($post->getUserEmail());
         }
         return false;
@@ -26,11 +27,10 @@ class Delete
         $query->execute();
     }
     private function getPostByUserEmail(string $userEmail) {
-        if(empty($id)) return null;
         $query = $this->connection->prepare('SELECT id, userEmail, title FROM posts WHERE userEmail = :userEmail');
         $query->bindValue(':userEmail', $userEmail);
         $query->execute();
-        return $query->fetch(PDO::FETCH_ASSOC) ?? null;
+        return (bool) $query->fetch(PDO::FETCH_ASSOC);
     }
 
 
