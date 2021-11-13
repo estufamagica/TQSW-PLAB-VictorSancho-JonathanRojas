@@ -11,7 +11,7 @@ class Delete
         $this->connection = $connection;
     }
     public function delete(Post $post) : bool {
-        return true;
+        return false;
     }
 
 }
