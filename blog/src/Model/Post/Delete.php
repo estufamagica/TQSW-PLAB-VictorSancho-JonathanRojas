@@ -10,7 +10,8 @@ class Delete
     public function __construct(PDO $connection) {
         $this->connection = $connection;
     }
-    private function delete() : bool {
+    public function delete(Post $post) : bool {
         return true;
     }
+
 }

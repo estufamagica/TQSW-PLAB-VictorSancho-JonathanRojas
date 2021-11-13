@@ -15,10 +15,10 @@ class Create
         $postByID =  $this->getPostByID($post->getId());
         if(!$postByID){
             $this->insert($post);
+
             return (bool) $this->getPostByID($post->getId());
         }
         return false;
-
     }
 
     private function getPostByID(string $id) {
