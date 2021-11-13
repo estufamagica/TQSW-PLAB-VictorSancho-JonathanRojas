@@ -26,7 +26,7 @@ class Delete
         $query->execute();
     }
     private function getPostByUserEmail(string $userEmail) {
-        $query = $this->connection->prepare('SELECT id, userEmail, title FROM posts WHERE userEmail = :userEmail');
+        $query = $this->connection->prepare('Select id, userEmail, title FROM posts WHERE userEmail = :userEmail');
         $query->bindValue(':userEmail', $userEmail);
         $query->execute();
         return (bool) $query->fetch(PDO::FETCH_ASSOC);

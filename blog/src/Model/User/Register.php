@@ -25,14 +25,14 @@ class Register
     }
 
     private function getUserByEmail(string $email) {
-        $query = $this->connection->prepare('SELECT * FROM users WHERE email = :email');
+        $query = $this->connection->prepare('Select * FROM users WHERE email = :email');
         $query->bindValue(':email', $email);
         $query->execute();
         return $query->fetch(PDO::FETCH_ASSOC) ?? null;
     }
 
     private function insertUser(User $user, string $username){
-        $query = $this->connection->prepare('INSERT INTO users (id, username, email, password) VALUES (NULL, :username, :email, :password)');
+        $query = $this->connection->prepare('INSERT INTO users (username, email, password) VALUES (:username, :email, :password)');
         $query->bindValue(':username', $username);
         $query->bindValue(':email', $user->getEmail());
         $query->bindValue(':password', $user->getPassword());

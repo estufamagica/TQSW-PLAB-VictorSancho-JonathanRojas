@@ -2,7 +2,6 @@
 
 namespace Tests\Model\Post;
 
-use App\Model\Post\Create;
 use App\Model\Post\Delete;
 use App\Model\Post\Post;
 use PHPUnit\Framework\TestCase;

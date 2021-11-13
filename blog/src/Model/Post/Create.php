@@ -21,7 +21,7 @@ class Create
     }
 
     private function getPostByEmail(string $userEmail, string $subject, string $message) {
-        $query = $this->connection->prepare('SELECT id, userEmail, subject FROM posts WHERE 
+        $query = $this->connection->prepare('Select id, userEmail, subject FROM posts WHERE 
                                                userEmail = :userEmail AND subject = :subject AND message = :message');
         $query->bindValue(':userEmail', $userEmail);
         $query->bindValue(':subject', $subject);
@@ -31,13 +31,10 @@ class Create
     }
 
     private function insert(Post $post) {
-        echo "INSERT FUNCTION";
         $query = $this->connection->prepare('INSERT INTO posts (subject, message, userEmail) VALUES (:subject, :message, :userEmail)');
         $query->bindValue(':subject', $post->getSubject());
         $query->bindValue(':message', $post->getMessage());
         $query->bindValue(':userEmail', $post->getUserEmail());
         $query->execute();
     }
-
-
 }

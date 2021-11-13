@@ -4,8 +4,6 @@ namespace Tests\Model\Post;
 
 use App\Model\Post\Create;
 use App\Model\Post\Post;
-use PDO;
-use PDOStatement;
 use PHPUnit\Framework\TestCase;
 use Tests\PDOStatementMock;
 
