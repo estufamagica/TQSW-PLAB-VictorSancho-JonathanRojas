@@ -15,18 +15,17 @@ class Create
         $postByID =  $this->getPostByID($post->getId());
         if(!$postByID){
             $this->insert($post);
-
-            return (bool) $this->getPostByID($post->getId());
+            return $this->getPostByID($post->getId());
         }
         return false;
     }
 
     private function getPostByID(string $id) {
-        if(empty($id)) return null;
+
         $query = $this->connection->prepare('SELECT id, idUser, title FROM posts WHERE id = :id');
         $query->bindValue(':id', $id);
         $query->execute();
-        return $query->fetch(PDO::FETCH_ASSOC) ?? null;
+        return (bool) $query->fetch(PDO::FETCH_ASSOC);
     }
 
     private function insert(Post $post) {

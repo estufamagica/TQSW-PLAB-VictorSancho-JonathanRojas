@@ -11,16 +11,17 @@ use Tests\PDOStatementMock;
 
 class CreateTest extends TestCase
 {
-    public function testCreatePostWithCorrectDataExpectsTrue() {
+    public function testCreatePostWithNotExistsPostExpectsTrue() {
         $createPost = new Create((new PDOStatementMock)->create([], ['id' => '1',
             'idUser'=>'1', 'title' => 'Title']));
         $post = new Post("1", "Title", "12345678901234567890", "1");
         $this->assertTrue($createPost->create($post));
     }
 
-    public function testCreatePostWithExistsIDInBDExpectsFalse() {
+    public function testCreatePostWithExistsExpectsFalse() {
 
-        $createPost = new Create((new PDOStatementMock)->create([]));
+        $createPost = new Create((new PDOStatementMock)->create(['id' => '1',
+            'idUser'=>'1', 'title' => 'Title']));
         $post = new Post("", "Title", "12345678901234567890", "Hola");
         $this->assertFalse($createPost->create($post));
     }
