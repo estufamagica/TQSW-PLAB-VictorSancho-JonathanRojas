@@ -12,15 +12,15 @@ class Create
     }
 
     public function create(Post $post) : bool {
-        $resultPost = $this->getPostByEmail($post->getUserEmail(), $post->getSubject(), $post->getMessage() );
+        $resultPost = $this->getPostByEmailSubjectMessage($post->getUserEmail(), $post->getSubject(), $post->getMessage() );
         if(!$resultPost){
             $this->insert($post);
-            return $this->getPostByEmail($post->getUserEmail(), $post->getSubject(), $post->getMessage() );
+            return $this->getPostByEmailSubjectMessage($post->getUserEmail(), $post->getSubject(), $post->getMessage() );
         }
         return false;
     }
 
-    private function getPostByEmail(string $userEmail, string $subject, string $message) {
+    private function getPostByEmailSubjectMessage(string $userEmail, string $subject, string $message) {
         $query = $this->connection->prepare('Select id, userEmail, subject FROM posts WHERE 
                                                userEmail = :userEmail AND subject = :subject AND message = :message');
         $query->bindValue(':userEmail', $userEmail);
