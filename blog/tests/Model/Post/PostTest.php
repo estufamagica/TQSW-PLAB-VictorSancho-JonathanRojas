@@ -18,18 +18,18 @@ class PostTest extends TestCase
 
     public function testPostWithThreeCharactersSubjectExpectsException(){
         $this->expectException(InvalidSubjectException::class);
-        new Post("abc", "Hola Pepito", "admin@admin.com");
+        new Post("abc", "Hola Pepito", "admin@admin.com");          //valor limit inferior al valor frontera minim(4)
     }
 
     public function testPostWithTwentyOneCharactersSubjectExpectsException(){
         $this->expectException(InvalidSubjectException::class);
-        new Post("123456789012345678901", "Hola Pepito", "admin@admin.com");
+        new Post("123456789012345678901", "Hola Pepito", "admin@admin.com");        //valor limit superior al valor frontera màxim(20)
     }
 
     public function testPostWithTwoHundredAndFiftySevenCharactersInMessageExpectsMaximumException() {
         $message = "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, s";
         $this->expectException(InvalidMessageException::class);
-        new Post("hola", $message, "admin@admin.com");
+        new Post("hola", $message, "admin@admin.com");          //valor limit superior al valor frontera maxim
     }
 
     public function testPostWithTwoHundredAndFiftySixCharactersInMessageExpectsCorrect() {

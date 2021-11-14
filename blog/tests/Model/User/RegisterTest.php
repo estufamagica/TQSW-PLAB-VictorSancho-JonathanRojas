@@ -53,7 +53,7 @@ class RegisterTest extends TestCase
         $this->assertTrue($register->register($user, "PacoX23", "paquito24"));
     }
 
-    public function testTwentyCharactersNameExpectsTrue(){
+    public function testTwentyCharactersNameExpectsTrue(){ //Valor frontera
         $register = new Register((new \Tests\PDOStatementMock)->create([], ['email' => 'tests@gmail.com',
             'password'=>'12345678', 'id'=>'1', 'username' => '12345678901234567890']));
 
@@ -61,14 +61,14 @@ class RegisterTest extends TestCase
         $this->assertTrue($register->register($user, "12345678901234567890", "12345678"));
     }
 
-    public function testTwentyOneCharactersNameExpectsFalse(){
+    public function testTwentyOneCharactersNameExpectsFalse(){ //Valor límit superior al màxim
         $register = new Register((new \Tests\PDOStatementMock)->create([]));
 
         $user = new User("test@gmail.com", "12345678");
         $this->assertFalse($register->register($user, "123456789012345678901", "12345678"));
     }
 
-    public function testNineTeenCharactersNameExpectsTrue(){
+    public function testNineTeenCharactersNameExpectsTrue(){    //Valor limit inferior al màxim
         $register = new Register((new \Tests\PDOStatementMock)->create([], ['email' => 'tests@gmail.com',
             'password'=>'12345678', 'id'=>'1', 'username' => '1234567890123456789']));
 
