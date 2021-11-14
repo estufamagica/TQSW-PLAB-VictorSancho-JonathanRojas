@@ -84,13 +84,5 @@ class PostTest extends TestCase
         $post = new Post("Title", $message, "admin@admin.com");
         $this->assertEquals($message, $post->getMessage());
     }
-    public function testPostWithIncorrectCharactersInSubjectExpectsException() {
-        return \LogicException::class;
-    }
-    public function testPostWithIncorrectCharactersInMessageExpectsException() {
-        return \LogicException::class;
-    }
-
-
 
 }
