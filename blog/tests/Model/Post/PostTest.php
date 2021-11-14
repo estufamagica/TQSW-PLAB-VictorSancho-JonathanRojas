@@ -35,7 +35,7 @@ class PostTest extends TestCase
     public function testPostWithTwoHundredAndFiftySixCharactersInMessageExpectsCorrect() {
         $message = "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis,.";
         $post = new Post("hola", $message, "admin@admin.com");
-        $this->assertEquals($message, $post->getMessage());
+        $this->assertEquals($message, $post->getMessage());             //valor frontera maxim
     }
 
     public function testPostWithMessageEmptyExpectsException() {
@@ -46,19 +46,19 @@ class PostTest extends TestCase
     public function testPostWithNineteenCharactersInMessageExpectsMinimumException() {
         $message =  "Lorem ipsum dolor s";
         $this->expectException(InvalidMessageException::class);
-        new Post("hola", $message, "admin@admin.com");
+        new Post("hola", $message, "admin@admin.com");      //valor limit inferior al valor frontera minim
     }
 
     public function testPostWithTwentyCharactersInMessageExpectsCorrect() {
         $message =  "Lorem ipsum dolor si";
         $post = new Post("hola", $message, "admin@admin.com");
-        $this->assertEquals($message, $post->getMessage());
+        $this->assertEquals($message, $post->getMessage());                 //valor frontera
     }
 
     public function testPostWithTwentyOneCharactersInMessageExpectsCorrect() {
         $message =  "Lorem ipsum dolor sii";
         $post = new Post("hola", $message, "admin@admin.com");
-        $this->assertEquals($message, $post->getMessage());
+        $this->assertEquals($message, $post->getMessage());                 //valor limit superior al valor frontera minim
     }
 
     public function testPostWithSubjectEmptyExpectsException() {
