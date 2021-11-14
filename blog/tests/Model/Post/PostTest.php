@@ -67,20 +67,20 @@ class PostTest extends TestCase
     }
 
     public function testPostWithFourCharactersInSubjectExpectsCorrect() {
-        $subject =  "hola"; //Valor limit (4)
+        $subject =  "hola";                     //Valor frontera(4)
         $post = new Post($subject, "Lorem ipsum dolor sii", "admin@admin.com");
         $this->assertEquals($subject, $post->getSubject());
     }
 
     public function testPostWithTwentyCharactersInSubjectExpectsCorrect() {
-        $subject =  "12345678901234567890"; //Valor limit(20)
+        $subject =  "12345678901234567890";     //Valor limit minim(20)
         $post = new Post($subject, "Lorem ipsum dolor sii", "admin@admin.com");
         $this->assertEquals($subject, $post->getSubject());
     }
 
     public function testPostWithTwoHundredAndFiftyFiveCharactersInMessageExpectsCorrect() {
         $message = "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis,";
-        //Valor limit(255)
+        //Valor limit inferior al valor frontera maxim(255)
         $post = new Post("Title", $message, "admin@admin.com");
         $this->assertEquals($message, $post->getMessage());
     }
