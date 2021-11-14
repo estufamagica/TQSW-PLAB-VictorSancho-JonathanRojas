@@ -73,9 +73,24 @@ class PostTest extends TestCase
     }
 
     public function testPostWithTwentyCharactersInSubjectExpectsCorrect() {
-        $subject =  "12345678901234567890";
+        $subject =  "12345678901234567890"; //Valor limit(20)
         $post = new Post($subject, "Lorem ipsum dolor sii", "admin@admin.com");
         $this->assertEquals($subject, $post->getSubject());
     }
+
+    public function testPostWithTwoHundredAndFiftyFiveCharactersInMessageExpectsCorrect() {
+        $message = "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis,";
+        //Valor limit(255)
+        $post = new Post("Title", $message, "admin@admin.com");
+        $this->assertEquals($message, $post->getMessage());
+    }
+    public function testPostWithIncorrectCharactersInSubjectExpectsException() {
+        return \LogicException::class;
+    }
+    public function testPostWithIncorrectCharactersInMessageExpectsException() {
+        return \LogicException::class;
+    }
+
+
 
 }
