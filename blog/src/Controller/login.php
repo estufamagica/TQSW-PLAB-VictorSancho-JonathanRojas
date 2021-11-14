@@ -19,7 +19,6 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
         if($login->login($user)) {
             $_SESSION['email'] = $user->getEmail();
             echo("<script>location.href = '/index.php?=';</script>");
-
         } else {
             echo "Not logged";
             require_once __DIR__ . '/../View/login.php';

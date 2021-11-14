@@ -66,4 +66,16 @@ class PostTest extends TestCase
         new Post("", "Lorem ipsum dolor sii", "admin@admin.com");
     }
 
+    public function testPostWithFourCharactersInSubjectExpectsCorrect() {
+        $subject =  "hola"; //Valor limit (4)
+        $post = new Post($subject, "Lorem ipsum dolor sii", "admin@admin.com");
+        $this->assertEquals($subject, $post->getSubject());
+    }
+
+    public function testPostWithTwentyCharactersInSubjectExpectsCorrect() {
+        $subject =  "12345678901234567890";
+        $post = new Post($subject, "Lorem ipsum dolor sii", "admin@admin.com");
+        $this->assertEquals($subject, $post->getSubject());
+    }
+
 }
