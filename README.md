@@ -7,12 +7,12 @@ Nuestra idea es crear un blog que vaya sobre videojuegos en general. Dondé incl
 ## Construido con 🛠️
 
 * PHP7
-* Javascript ES6
 * HTML5
 * CSS3
 * PhpMyAdmin
 * Docker
 * Compose
+* PHP Unit
 
 ## Autores ✒️
 
@@ -22,13 +22,13 @@ Grupo Jueves 12.30 a 14.30
 * **Victor Sancho Aguilera - NIU: 1529721** [estufamagica](https://github.com/estufamagica)
 * **Jonathan Rojas Granda - NIU: 1533448** [jonaprg](https://github.com/jonaprg)
 
-###Install dependencies 
-```
-docker exec blog-php composer install
-```
 ### Run project detach
 ```
 docker-compose up -d
+```
+### Install dependencies 
+```
+docker exec blog-php composer install
 ```
 ### Open container bash
 ```
@@ -38,7 +38,11 @@ docker exec -ti blog-php bash
 ```
 docker exec blog-php ./vendor/bin/phpunit tests/
 ```
+```
+docker exec blog-php ./vendor/bin/phpunit tests/ --filter=testFunction
+```
 ### Run Generate code coverage
+Per veure el coverage de la aplicació, hi ha una carpeta Coverage que tenen arxius HTML sobre el code coverage.
 ```
 docker exec -ti blog-php bash
 
