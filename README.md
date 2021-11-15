@@ -30,10 +30,11 @@ docker-compose up -d
 ```
 docker exec blog-php composer install
 ```
-### 3. Step - Run test
+### 3. Step - Run tests
 ```
 docker exec blog-php ./vendor/bin/phpunit tests/
 ```
+### 3.1 Step - Run specific test
 ```
 docker exec blog-php ./vendor/bin/phpunit tests/ --filter=testFunction
 ```
@@ -45,7 +46,7 @@ docker exec -ti blog-php bash
 XDEBUG_MODE=coverage ./vendor/bin/phpunit --coverage-html coverage
 ```
 
-### If u want - Open container bash
+### Open container bash
 ```
 docker exec -ti blog-php bash
 ```
