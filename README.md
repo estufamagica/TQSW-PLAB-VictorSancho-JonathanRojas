@@ -39,7 +39,7 @@ docker exec blog-php ./vendor/bin/phpunit tests/
 docker exec blog-php ./vendor/bin/phpunit tests/ --filter=testFunction
 ```
 ### 4. Step - Run Generate code coverage
-Per veure el coverage de la aplicació, hi ha una carpeta Coverage que tenen arxius HTML sobre el code coverage.
+Per veure el coverage de la aplicació, hi ha una carpeta blog/Coverage que tenen arxius HTML sobre el code coverage.
 ```
 docker exec -ti blog-php bash
 
