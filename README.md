@@ -50,3 +50,7 @@ XDEBUG_MODE=coverage ./vendor/bin/phpunit --coverage-html coverage
 ```
 docker exec -ti blog-php bash
 ```
+### Open web and phpmyadmin
+```
+localhost:8002 and localhost:8003
+```
